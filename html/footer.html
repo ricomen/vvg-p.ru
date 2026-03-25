@@ -16,26 +16,11 @@
 				<div class="footer_column footer_links">
 					<div class="footer_title">О храме</div>
 					<ul class="footer_links_list">
-						<li>
-							<a href="/" title="Главная">
-								<i class="fa fa-chevron-right" aria-hidden="true"></i>Главная
-							</a>
-						</li>
-						<li>
-							<a href="{$_modx->makeUrl('83')}" title="Расписание Богослужений">
-								<i class="fa fa-chevron-right" aria-hidden="true"></i>Расписание Богослужений
-							</a>
-						</li>
-						<li>
-							<a href="{$_modx->makeUrl('89')}" title="Об организации">
-								<i class="fa fa-chevron-right" aria-hidden="true"></i>Юридические данные
-							</a>
-						</li>
-						<li>
-							<a href="{$_modx->makeUrl('4')}" title="Контакты">
-								<i class="fa fa-chevron-right" aria-hidden="true"></i>Контакты
-							</a>
-						</li>
+						<li><a href="/" title="Главная"><i class="fa fa-chevron-right" aria-hidden="true"></i>Главная</a></li>
+						<li><a href="{$_modx->makeUrl('83')}" title="Расписание Богослужений"><i class="fa fa-chevron-right" aria-hidden="true"></i>Расписание Богослужений</a></li>
+						<li><a href="{$_modx->makeUrl('89')}" title="Об организации"><i class="fa fa-chevron-right" aria-hidden="true"></i>Юридические данные</a></li>
+						<li><a href="{$_modx->makeUrl('110')}" title="Помощь по сайту"><i class="fa fa-chevron-right" aria-hidden="true"></i>Помощь по сайту</a></li>						
+						<li><a href="{$_modx->makeUrl('4')}" title="Контакты"><i class="fa fa-chevron-right" aria-hidden="true"></i>Контакты</a></li>
 					</ul>
 				</div>
 			</div>
@@ -186,28 +171,27 @@
 			<input type="hidden" name="resource_delivery" value="">
 			<input type="hidden" name="resource_id" value="">
 			<input type="hidden" name="resource_action" value="">
-			<div class="row">
-				<div class="col-12" style="margin: 0 0 20px 0;">
-					<div class="float-field">
-						<input type="text" class="form_input" name="name" placeholder=" " required="required">
-						<label>Ваше имя</label>
-					</div>
-				</div>
-				<div class="col-12">
-					<div class="float-field">
-						<input class="form_input price-input" type="number" name="sum" placeholder=" " required="required">
-						<label>Сумма пожертвования в рублях</label>
-					</div>
-				</div>
-				<div class="col-12">
-					<p style="font-size: 12px;">Назначение платежа: Благотворительное пожертвование.</p>
-				</div>
-
-				<div class="col-12"><button type="submit" class="form_submit_button">Внести пожертвование</button>
-					<p style="font-size: 12px;" class="form-message"></p>
-				</div>
-
-			</div>
+            <div class="row">
+            	<div class="col-12" style="margin: 0 0 20px 0;">
+            		<div class="float-field">
+            			<input type="text" class="form_input" name="name" placeholder=" " required="required">
+            			<label>Ваше имя</label>
+            		</div>
+            	</div>
+            	<div class="col-12">
+            		<div class="float-field">
+            			<input class="form_input price-input" type="number" name="sum" placeholder=" " required="required" {if $_modx->config.mincosta > 0}min="{$_modx->config.mincosta}"{/if}>
+            			<label>Сумма пожертвования в рублях</label>
+            		</div>
+            	</div>
+            	<div class="col-12">
+            		<p style="font-size: 12px;">Назначение платежа: Благотворительное пожертвование.</p>
+            	</div>
+            
+            	<div class="col-12"><button type="submit" class="form_submit_button">Внести пожертвование</button>
+            		<p style="font-size: 12px;" class="form-message"></p>
+            	</div>
+            </div>
 		</form>
 		[[-- <!--yookassa--> --]]
 		{elseif $_modx->config.ms2_payment_cloudpayments_enable == 1}
@@ -227,10 +211,10 @@
 				</div>
 				<div class="col-12 mb-2 input-group-sm">
 					<div class="float-field">
-						<input type="number" class="cloud-donation-sum form_input price-input" id="cloud-donation-sum" name="sum" placeholder=" " />
+						<input type="number" class="cloud-donation-sum form_input price-input" id="cloud-donation-sum" name="sum" placeholder=" " {if $_modx->config.mincosta > 0}min="{$_modx->config.mincosta}"{/if}/>
 						<label for="cloud-donation-sum">Введите сумму</label>
-						<div class="text-danger input-error"></div>
 					</div>
+					<div class="text-danger input-error"></div>
 				</div>
 				<div class="col-12 mb-2 font-weight-bold">
 					Выберите как часто перечислять средства
@@ -250,30 +234,30 @@
 							value="month">Раз в месяц</label>
 				</div>
                 <div class="col-12 mb-3">
-                  <div class="float-field">
-                    <input
-                      type="email"
-                      id="cloud-donation-email"
-                      class="cloud-donation-email form_input"
-                      name="email"
-                      placeholder=" "
-                    >
-                    <label for="cloud-donation-email">Электронная почта e-mail</label>
+                    <div class="float-field">
+                        <input
+                          type="email"
+                          id="cloud-donation-email"
+                          class="cloud-donation-email form_input"
+                          name="email"
+                          placeholder=" "
+                        >
+                        <label for="cloud-donation-email">Электронная почта e-mail</label>
+                    </div>
                     <div class="text-danger input-error"></div>
-                  </div>
                 </div>
                 <div class="col-12 mb-3">
-                  <div class="float-field">
-                    <input
-                      type="text"
-                      id="cloud-donation-name"
-                      class="cloud-donation-name form_input"
-                      name="name"
-                      placeholder=" "
-                    >
-                    <label for="cloud-donation-name">ФИО благотворителя</label>
+                    <div class="float-field">
+                        <input
+                          type="text"
+                          id="cloud-donation-name"
+                          class="cloud-donation-name form_input"
+                          name="name"
+                          placeholder=" "
+                        >
+                        <label for="cloud-donation-name">ФИО благотворителя</label>
+                    </div>
                     <div class="text-danger input-error"></div>
-                  </div>
                 </div>
 				{*<div class="col-12">
 					<p style="font-size: 12px;">
@@ -314,10 +298,10 @@
 				</div>
 				<div class="col-12 mb-2 input-group-sm">
 					<div class="float-field">
-						<input type="number" class="cloud-donation-sum form_input price-input" id="cloud-donation-sum" name="sum" placeholder=" " />
+						<input type="number" class="cloud-donation-sum form_input price-input" id="cloud-donation-sum" name="sum" placeholder=" " {if $_modx->config.mincosta > 0}min="{$_modx->config.mincosta}"{/if}/>
 						<label for="cloud-donation-sum">Введите сумму</label>
-						<div class="text-danger input-error"></div>
 					</div>
+					<div class="text-danger input-error"></div>
 				</div>
 				<div class="col-12 mb-2 font-weight-bold">
 					Выберите как часто перечислять средства
@@ -346,8 +330,8 @@
 						placeholder=" "
 						>
 						<label for="cloud-donation-email">Электронная почта e-mail</label>
-						<div class="text-danger input-error"></div>
 					</div>
+					<div class="text-danger input-error"></div>
 				</div>
 				<div class="col-12 mb-3">
 					<div class="float-field">
@@ -359,8 +343,8 @@
 						placeholder=" "
 						>
 						<label for="cloud-donation-name">ФИО благотворителя</label>
-						<div class="text-danger input-error"></div>
 					</div>
+					<div class="text-danger input-error"></div>
 				</div>
 				{*<div class="col-12">
 					<p style="font-size: 12px;">
@@ -386,16 +370,11 @@
 			<input type="hidden" name="resource_action" value="">
 			<div class="row">
 				<div class="col-12" style="margin: 0 0 20px 0;">
-					<div class="float-field">
-						<input type="text" class="form_input" name="name" placeholder=" " required="required">
-						<label>Ваше имя</label>
-					</div>
+					<input type="text" class="form_input" name="name" placeholder="Ваше имя" required="required" {if $_modx->config.mincosta > 0}min="{$_modx->config.mincosta}"{/if}>
 				</div>
 				<div class="col-12">
-					<div class="float-field">
-						<input class="form_input price-input" type="number" name="sum" placeholder=" " required="required">
-						<label>Сумма пожертвования в рублях</label>
-					</div>
+					<input class="form_input price-input" type="number" name="sum"
+						placeholder="Сумма пожертвования в рублях" required="required">
 				</div>
 				<div class="col-12">
 					<p style="font-size: 12px;">Назначение платежа: Благотворительное пожертвование.</p>
@@ -651,8 +630,17 @@
 
 			function showFieldError($field, message) {
 				if (!$field || !$field.length) return;
+
 				$field.addClass('is-invalid');
-				$('<div class="field-error"></div>').text(message).insertAfter($field);
+
+				const $floatField = $field.closest('.float-field');
+				const $error = $('<div class="field-error"></div>').text(message);
+
+				if ($floatField && $floatField.length) {
+					$error.insertAfter($floatField);
+				} else {
+					$error.insertAfter($field);
+				}
 			}
 
 			// Validation
