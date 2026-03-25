@@ -298,8 +298,18 @@ section {
 .nopadding {
     padding: 0px !important;
 }
-
-.button {width: 160px;height: initial;text-align: center;background: #0c3e6e;border-radius: 25px;font-weight: 700;/* box-shadow: inset 0px 0px 0 3px #e9ecef; */border: 2px #e9ecef solid;}
+button {
+  cursor: pointer;
+}
+.button {
+  width: 160px;
+  height: initial;
+  text-align: center;
+  background: #0c3e6e;
+  border-radius: 25px;
+  font-weight: 700;/* box-shadow: inset 0px 0px 0 3px #e9ecef; */
+  border: 2px #e9ecef solid;
+}
 
 .button a {
     display: block;
@@ -2508,7 +2518,7 @@ a.bg-secondary:focus, a.bg-secondary:hover {
     font-size: 20px;
     transition: 0.3s;
     font-weight: 600;
-    z-index: 9;
+    z-index: 1040;
     border: 3px #fff solid;
     box-shadow: 0 0 0 3px #0c3e6e;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Oxygen, Cantarell, sans-serif;
@@ -2522,9 +2532,9 @@ a.bg-secondary:focus, a.bg-secondary:hover {
 .table td {
     font-size: 16px;
 }
-
 .table--donations {
 }
+
 
 .table--donations thead {
 }
@@ -3939,6 +3949,12 @@ body.compensate-for-scrollbar .header{
   pointer-events: none;
   transition: all 0.2s ease;
 }
+
+/* для textarea label должен быть выше, чем у обычных input */
+.float-field textarea.form_input + label {
+  top: 22px;
+}
+
 /* поднятие label при фокусе или когда есть значение */
 .float-field .form_input:focus + label,
 .float-field .form_input:not(:placeholder-shown) + label {
