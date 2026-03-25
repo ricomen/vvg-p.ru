@@ -16,11 +16,16 @@
 				<div class="footer_column footer_links">
 					<div class="footer_title">О храме</div>
 					<ul class="footer_links_list">
-						<li><a href="/" title="Главная"><i class="fa fa-chevron-right" aria-hidden="true"></i>Главная</a></li>
-						<li><a href="{$_modx->makeUrl('83')}" title="Расписание Богослужений"><i class="fa fa-chevron-right" aria-hidden="true"></i>Расписание Богослужений</a></li>
-						<li><a href="{$_modx->makeUrl('89')}" title="Об организации"><i class="fa fa-chevron-right" aria-hidden="true"></i>Юридические данные</a></li>
-						<li><a href="{$_modx->makeUrl('110')}" title="Помощь по сайту"><i class="fa fa-chevron-right" aria-hidden="true"></i>Помощь по сайту</a></li>						
-						<li><a href="{$_modx->makeUrl('4')}" title="Контакты"><i class="fa fa-chevron-right" aria-hidden="true"></i>Контакты</a></li>
+						<li><a href="/" title="Главная"><i class="fa fa-chevron-right"
+									aria-hidden="true"></i>Главная</a></li>
+						<li><a href="{$_modx->makeUrl('83')}" title="Расписание Богослужений"><i
+									class="fa fa-chevron-right" aria-hidden="true"></i>Расписание Богослужений</a></li>
+						<li><a href="{$_modx->makeUrl('89')}" title="Об организации"><i class="fa fa-chevron-right"
+									aria-hidden="true"></i>Юридические данные</a></li>
+						<li><a href="{$_modx->makeUrl('110')}" title="Помощь по сайту"><i class="fa fa-chevron-right"
+									aria-hidden="true"></i>Помощь по сайту</a></li>
+						<li><a href="{$_modx->makeUrl('4')}" title="Контакты"><i class="fa fa-chevron-right"
+									aria-hidden="true"></i>Контакты</a></li>
 					</ul>
 				</div>
 			</div>
@@ -131,28 +136,31 @@
 				<div class="footer-organization">
 					Русская православная церковь. ОГРН {$homeId | resource : 'ogrn'}. ИНН {$homeId | resource : 'inn'}.
 					{$homeId | resource : 'nazvanieorganizacii'}.<br>
-					<a href="{$_modx->makeUrl('95')}" class="ml-0"><i style="margin: 0 5px 0 0;" class="fa fa-angle-double-right"></i>Политика Конфиденциальности</a>
-					<a href="{$_modx->makeUrl('94')}" class="ml-0"><i style="margin: 0 5px 10px 10px;" class="fa fa-angle-double-right"></i>Договор-оферта</a>
-					<a href="{$_modx->makeUrl('96')}" class="ml-0"><i style="margin: 0 5px 10px 10px;" class="fa fa-angle-double-right"></i>Соглашение о регулярных платежах</a>
+					<a href="{$_modx->makeUrl('95')}" class="ml-0"><i style="margin: 0 5px 0 0;"
+							class="fa fa-angle-double-right"></i>Политика Конфиденциальности</a>
+					<a href="{$_modx->makeUrl('94')}" class="ml-0"><i style="margin: 0 5px 10px 10px;"
+							class="fa fa-angle-double-right"></i>Договор-оферта</a>
+					<a href="{$_modx->makeUrl('96')}" class="ml-0"><i style="margin: 0 5px 10px 10px;"
+							class="fa fa-angle-double-right"></i>Соглашение о регулярных платежах</a>
 				</div>
 			</div>
 		</div>
 	</div>
 </footer>
 
-<section id="cookie-banner" class="fixed-bottom bg-light border-top py-3">
-  <div class="container">
-    <div class="d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between">
-      <p class="mb-3 mb-md-0 text-muted pr-md-3">
-        Сайт vvg-p.ru использует cookies для улучшения работы, их можно отключить в настройках браузера.
-        Продолжая использовать наш веб-ресурс, Вы подтверждаете согласие с
-        <a href="/privacy/" target="_blank" rel="nofollow">Политикой Конфиденциальности</a>.
-      </p>
-      <button id="cookie-accept" type="button" class="btn btn-outline-secondary btn-sm flex-shrink-0">
-        Согласен
-      </button>
-    </div>
-  </div>
+<section id="cookie-banner" class="cookie-banner bg-light border-top py-3" hidden>
+	<div class="container">
+		<div class="d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between">
+			<p class="mb-3 mb-md-0 text-muted pr-md-3">
+				Сайт vvg-p.ru использует cookies для улучшения работы, их можно отключить в настройках браузера.
+				Продолжая использовать наш веб-ресурс, Вы подтверждаете согласие с
+				<a href="/privacy/" target="_blank" rel="nofollow">Политикой Конфиденциальности</a>.
+			</p>
+			<button id="cookie-accept" type="button" class="btn btn-outline-secondary btn-sm flex-shrink-0">
+				Согласен
+			</button>
+		</div>
+	</div>
 </section>
 
 <a class="cloud-payments-form-trigger js-cloud-payments-form-icon text-dark" data-fancybox=""
@@ -161,6 +169,7 @@
 	<div style="text-align: center; color: #FFFFFF;">Жертвовать<br>регулярно</div>
 </a>
 
+[[$question_form]]
 <div class="popup" id="popup-donation" style="display: none">
 	<div class="h2">Сделать пожертвование</div>
 	<div class="contact_form_container">
@@ -171,27 +180,29 @@
 			<input type="hidden" name="resource_delivery" value="">
 			<input type="hidden" name="resource_id" value="">
 			<input type="hidden" name="resource_action" value="">
-            <div class="row">
-            	<div class="col-12" style="margin: 0 0 20px 0;">
-            		<div class="float-field">
-            			<input type="text" class="form_input" name="name" placeholder=" " required="required">
-            			<label>Ваше имя</label>
-            		</div>
-            	</div>
-            	<div class="col-12">
-            		<div class="float-field">
-            			<input class="form_input price-input" type="number" name="sum" placeholder=" " required="required" {if $_modx->config.mincosta > 0}min="{$_modx->config.mincosta}"{/if}>
-            			<label>Сумма пожертвования в рублях</label>
-            		</div>
-            	</div>
-            	<div class="col-12">
-            		<p style="font-size: 12px;">Назначение платежа: Благотворительное пожертвование.</p>
-            	</div>
-            
-            	<div class="col-12"><button type="submit" class="form_submit_button">Внести пожертвование</button>
-            		<p style="font-size: 12px;" class="form-message"></p>
-            	</div>
-            </div>
+			<div class="row">
+				<div class="col-12" style="margin: 0 0 20px 0;">
+					<div class="float-field">
+						<input type="text" class="form_input" name="name" placeholder=" ">
+						<label>Ваше имя</label>
+					</div>
+				</div>
+				<div class="col-12">
+					<div class="float-field">
+						<input class="form_input price-input" type="number" name="sum" placeholder=" " {if
+							$_modx->config.mincosta > 0}min="{$_modx->config.mincosta}"{/if}
+						/>
+						<label>Сумма пожертвования в рублях</label>
+					</div>
+				</div>
+				<div class="col-12">
+					<p style="font-size: 12px;">Назначение платежа: Благотворительное пожертвование.</p>
+				</div>
+
+				<div class="col-12"><button type="submit" class="form_submit_button">Внести пожертвование</button>
+					<p style="font-size: 12px;" class="form-message"></p>
+				</div>
+			</div>
 		</form>
 		[[-- <!--yookassa--> --]]
 		{elseif $_modx->config.ms2_payment_cloudpayments_enable == 1}
@@ -211,10 +222,12 @@
 				</div>
 				<div class="col-12 mb-2 input-group-sm">
 					<div class="float-field">
-						<input type="number" class="cloud-donation-sum form_input price-input" id="cloud-donation-sum" name="sum" placeholder=" " {if $_modx->config.mincosta > 0}min="{$_modx->config.mincosta}"{/if}/>
+						<input type="number" class="cloud-donation-sum form_input price-input" id="cloud-donation-sum"
+							name="sum" placeholder=" " {if $_modx->config.mincosta >
+						0}data-min="{$_modx->config.mincosta}"{/if}
+						/>
 						<label for="cloud-donation-sum">Введите сумму</label>
 					</div>
-					<div class="text-danger input-error"></div>
 				</div>
 				<div class="col-12 mb-2 font-weight-bold">
 					Выберите как часто перечислять средства
@@ -233,32 +246,20 @@
 							style="position: relative;top: 3px;width: 17px;height: 17px;" type="radio" name="period"
 							value="month">Раз в месяц</label>
 				</div>
-                <div class="col-12 mb-3">
-                    <div class="float-field">
-                        <input
-                          type="email"
-                          id="cloud-donation-email"
-                          class="cloud-donation-email form_input"
-                          name="email"
-                          placeholder=" "
-                        >
-                        <label for="cloud-donation-email">Электронная почта e-mail</label>
-                    </div>
-                    <div class="text-danger input-error"></div>
-                </div>
-                <div class="col-12 mb-3">
-                    <div class="float-field">
-                        <input
-                          type="text"
-                          id="cloud-donation-name"
-                          class="cloud-donation-name form_input"
-                          name="name"
-                          placeholder=" "
-                        >
-                        <label for="cloud-donation-name">ФИО благотворителя</label>
-                    </div>
-                    <div class="text-danger input-error"></div>
-                </div>
+				<div class="col-12 mb-3">
+					<div class="float-field">
+						<input type="email" id="cloud-donation-email" class="cloud-donation-email form_input"
+							name="email" placeholder=" ">
+						<label for="cloud-donation-email">Электронная почта e-mail</label>
+					</div>
+				</div>
+				<div class="col-12 mb-3">
+					<div class="float-field">
+						<input type="text" id="cloud-donation-name" class="cloud-donation-name form_input" name="name"
+							placeholder=" ">
+						<label for="cloud-donation-name">ФИО благотворителя</label>
+					</div>
+				</div>
 				{*<div class="col-12">
 					<p style="font-size: 12px;">
 						Нажимая кнопку «Пожертвовать», вы соглашаетесь с
@@ -267,7 +268,7 @@
 					</p>
 				</div>*}
 				<div class="col-12 text-center mt-2">
-				    <button type="submit" class="form_submit_button">Пожертвовать</button>
+					<button type="submit" class="form_submit_button">Пожертвовать</button>
 					<p style="font-size: 12px;" class="form-message"></p>
 				</div>
 
@@ -298,10 +299,12 @@
 				</div>
 				<div class="col-12 mb-2 input-group-sm">
 					<div class="float-field">
-						<input type="number" class="cloud-donation-sum form_input price-input" id="cloud-donation-sum" name="sum" placeholder=" " {if $_modx->config.mincosta > 0}min="{$_modx->config.mincosta}"{/if}/>
+						<input type="number" class="cloud-donation-sum form_input price-input" id="cloud-donation-sum"
+							name="sum" placeholder=" " {if $_modx->config.mincosta >
+						0}data-min="{$_modx->config.mincosta}"{/if}
+						/>
 						<label for="cloud-donation-sum">Введите сумму</label>
 					</div>
-					<div class="text-danger input-error"></div>
 				</div>
 				<div class="col-12 mb-2 font-weight-bold">
 					Выберите как часто перечислять средства
@@ -322,29 +325,17 @@
 				</div>
 				<div class="col-12 mb-3">
 					<div class="float-field">
-						<input
-						type="email"
-						id="cloud-donation-email"
-						class="cloud-donation-email form_input"
-						name="email"
-						placeholder=" "
-						>
+						<input type="email" id="cloud-donation-email" class="cloud-donation-email form_input"
+							name="email" placeholder=" ">
 						<label for="cloud-donation-email">Электронная почта e-mail</label>
 					</div>
-					<div class="text-danger input-error"></div>
 				</div>
 				<div class="col-12 mb-3">
 					<div class="float-field">
-						<input
-						type="text"
-						id="cloud-donation-name"
-						class="cloud-donation-name form_input"
-						name="name"
-						placeholder=" "
-						>
+						<input type="text" id="cloud-donation-name" class="cloud-donation-name form_input" name="name"
+							placeholder=" ">
 						<label for="cloud-donation-name">ФИО благотворителя</label>
 					</div>
-					<div class="text-danger input-error"></div>
 				</div>
 				{*<div class="col-12">
 					<p style="font-size: 12px;">
@@ -370,11 +361,14 @@
 			<input type="hidden" name="resource_action" value="">
 			<div class="row">
 				<div class="col-12" style="margin: 0 0 20px 0;">
-					<input type="text" class="form_input" name="name" placeholder="Ваше имя" required="required" {if $_modx->config.mincosta > 0}min="{$_modx->config.mincosta}"{/if}>
+					<input type="text" class="form_input" name="name" placeholder="Ваше имя" required="required" {if
+						$_modx->config.mincosta > 0}min="{$_modx->config.mincosta}"{/if}>
 				</div>
 				<div class="col-12">
 					<input class="form_input price-input" type="number" name="sum"
-						placeholder="Сумма пожертвования в рублях" required="required">
+						placeholder="Сумма пожертвования в рублях" required="required" {if $_modx->config.mincosta >
+					0}data-min="{$_modx->config.mincosta}"{/if}
+					/>
 				</div>
 				<div class="col-12">
 					<p style="font-size: 12px;">Назначение платежа: Благотворительное пожертвование.</p>
@@ -393,16 +387,17 @@
 
 [[#1.tv.videobaner:notempty=`
 
-<div class="video-widget" data-state="default">
-    <div class="video-widget__container">
-        <video id="video-widget__video" loop="" autoplay="" playsinline="" preload="auto" muted="muted" controlslist="nodownload" disablepictureinpicture="" class="video-widget__video" src="[[#1.tv.videobaner]]">
-            <source src="[[#1.tv.videobaner]]" type="video/mp4">
-        </video>
-        <div class="video-widget__close">
-            
-        </div>
-        <a class="video-widget__button" href="/treby">Передать просьбу</a>
-    </div>
+<div class="video-widget [[#1.tv.videobaner_mobile_hide:notempty=`video-widget-hidden-mobile`]]" data-state="default">
+	<div class="video-widget__container">
+		<video id="video-widget__video" loop="" autoplay="" playsinline="" preload="auto" muted="muted"
+			controlslist="nodownload" disablepictureinpicture="" class="video-widget__video" src="[[#1.tv.videobaner]]">
+			<source src="[[#1.tv.videobaner]]" type="video/mp4">
+		</video>
+		<div class="video-widget__close">
+
+		</div>
+		<a class="video-widget__button" href="/treby">Передать просьбу</a>
+	</div>
 </div>
 `]]
 
@@ -504,7 +499,7 @@
 		elSum = form.find('.cloud-donation-sum');
 		elName = form.find('.cloud-donation-name');
 		elEmail = form.find('.cloud-donation-email');
-		elSubscribeOneDay = form.find('.cloud-donation-subscribe-one-day') ;
+		elSubscribeOneDay = form.find('.cloud-donation-subscribe-one-day');
 		elSubscribeOneWeek = form.find('.cloud-donation-subscribe-one-week');
 		elSubscribeOneMonth = form.find('.cloud-donation-subscribe-one-month');
 
@@ -541,7 +536,7 @@
 
 			pId = window.MODx_pId || 0;
 			widget.pay('charge',
-			//widget.pay('auth',
+				//widget.pay('auth',
 				{
 					paymentSchema: 'Single',
 					publicId: pId,
@@ -564,8 +559,8 @@
 						elSubscribeOneMonth.prop('checked', false);
 						//window.location.reload();
 						let url = new URL(window.location.href);
-						url.searchParams.set('successPay', 'Y'); 
-						url.searchParams.set('msorder', params.invoiceId); 
+						url.searchParams.set('successPay', 'Y');
+						url.searchParams.set('msorder', params.invoiceId);
 						window.location.href = url.href;
 					},
 					onFail: function (reason, options) {
@@ -581,7 +576,7 @@
 			console.log('no sum && name && email');
 		}
 	}
-	
+
 	// set dynamic price for ym goal
 	jQuery(document).ready(function () {
 
@@ -643,14 +638,19 @@
 				}
 			}
 
+
 			// Validation
+			const $sumInput = form.find('input[name="sum"]').first();
+			let minSum = parseFloat($sumInput.attr('data-min'));
+
 			if (!fields['sum']) {
 				isValid = false;
-				showFieldError(form.find('input[name="sum"]').first(), 'Заполните сумму.');
-			} else if (parseFloat(fields['sum']) < 50 && form[0].id !== 'treby-form') {
+				showFieldError($sumInput, 'Заполните сумму.');
+			} else if (parseFloat(fields['sum']) < minSum && form[0].id !== 'treby-form') {
 				isValid = false;
-				showFieldError(form.find('input[name="sum"]').first(), 'Сумма пожертвования должна быть не менее 50 рублей.');
+				showFieldError($sumInput, 'Сумма пожертвования должна быть не менее ' + minSum + ' рублей.');
 			}
+
 			if (form.find('input[name="name"]').length && !fields['name']) {
 				isValid = false;
 				showFieldError(form.find('input[name="name"]').first(), 'Пожалуйста, заполните поле "Ваше имя".');
@@ -686,12 +686,12 @@
 					}
 					form.find('button').prop('disabled', false);
 					// Send the goal to Yandex Metrica
-					if('resource_action' in fields && fields['resource_action']){
+					if ('resource_action' in fields && fields['resource_action']) {
 						/*const goalName = fields['resource_action'];
 						window['yaCounter' + window.MODx_counterId].reachGoal(goalName);*/
 					} else {
 						const goalName = form.attr('name');
-						window['yaCounter' + window.MODx_counterId].reachGoal(goalName);						
+						window['yaCounter' + window.MODx_counterId].reachGoal(goalName);
 					}
 				} else {
 					form.find('.form-message').html(obj.message);
@@ -705,16 +705,16 @@
 {if $.get['msorder'] and $.get['msorder'] > 0}
 {set $orderCheck = $_modx->runSnippet('!yookassaCheckOrderById',['orderId' => $.get['msorder']])}
 {if $orderCheck in [0, 2]}
-	<div class="popupSuccess" id="popupSuccess" style="display: none">
-		{'popupSuccess' | chunk}
-	</div>
-	<script>
+<div class="popupSuccess" id="popupSuccess" style="display: none">
+	{'popupSuccess' | chunk}
+</div>
+<script>
 	document.addEventListener("DOMContentLoaded", () => {
 		console.log('popupSuccess');
 		$.fancybox.open({
 			src: '#popupSuccess',
 		});
 	});
-	</script>
+</script>
 {/if}
 {/if}

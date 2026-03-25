@@ -557,15 +557,14 @@ function initPrayerForm() {
  */
 function initCookieBanner() {
   const cookieBanner = document.querySelector("#cookie-banner");
-  const cookieAcceptBtn = document.querySelector("#cookie-accept");
+  const cookieAcceptBtn = cookieBanner.querySelector("#cookie-accept");
+
   if (!cookieBanner || !cookieAcceptBtn) return;
-  cookieBanner.hidden = true;
-  if (localStorage.getItem(cookieConsentStorageKey)) {
-    return;
-  }
-  setTimeout(() => {
+
+  if (!localStorage.getItem(cookieConsentStorageKey)) {
     cookieBanner.hidden = false;
-  }, 1000);
+  }
+  
   cookieAcceptBtn.addEventListener("click", () => {
     cookieBanner.hidden = true;
     localStorage.setItem(cookieConsentStorageKey, "true");

@@ -64,6 +64,7 @@
   --btn-bg: #6a8473;
   --progress-bar-color-primary: #76d3fc;
   --progress-bar-color-grey: #dddddd;
+  --danger-color: #dc3545;
 }
 * {
     margin: 0;
@@ -3931,7 +3932,6 @@ body.compensate-for-scrollbar .header{
   }
 }
 
-
 /* 16 Form validation */
 .float-field {
   position: relative;
@@ -3964,13 +3964,25 @@ body.compensate-for-scrollbar .header{
   color: #555;
 }
 
+.field-error {
+  font-size: 14px;
+  color: var(--danger-color);
+}
+
 /* 17 Cookies */
 .cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
   background: #f0f5fd;
   z-index: 1030;
 }
 
 @media (max-width: 767.98px) {
+  .cookie-banner {
+    position: static !important;
+  }
   .cookie-banner p {
     font-size: 14px;
     line-height: 1.43;

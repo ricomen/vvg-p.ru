@@ -1,0 +1,32 @@
+{set $homeId = 1}
+<div style="clear:both;"></div>
+<div class="donations">
+	<div class="donations_background" style="background:url('/theme/images/pomoch-hramu.jpg');"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="donations_content">
+					<div class="donation_title">Помочь храму</div>
+					<div class="donation_info_container">
+						[[--  <div class="donation_info">
+							<div class="donation_info_title"></div>
+							<ul class="donation_info_list">
+								<li>{$homeId | resource : 'batyushka'}</li>
+							</ul>
+						</div> --]] 
+					</div>
+					<div class="donation_text">
+						<p>Каждая копейка и каждая пара рук сейчас на счету.</p>
+						<p>Давайте докажем, что мы — одна большая семья, которая заботится о своем доме.</p>
+						<p>Поможем храму вместе! Спаси вас Господи за ваши добрые сердца. 🙏✨</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="donation_details_container">
+					{'@FILE /partials/donation-details.html' | chunk : ['id' => 'cp-middle']}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
