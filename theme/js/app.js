@@ -141,7 +141,6 @@ function initScrollToTop() {
  * @returns {void}
  */
 function initPrayerForm() {
-  //const prayerForm = document.forms.prayer;
   const prayerForm = document.querySelector('[data-form="treby"]');
 
   if (prayerForm) {

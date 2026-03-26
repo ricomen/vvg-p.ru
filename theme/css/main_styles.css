@@ -2885,7 +2885,6 @@ position: absolute !important;
 .treby-grid{
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
 }
 .treby-grid .button{
  width: 275px;
