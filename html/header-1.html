@@ -83,9 +83,16 @@
 						<li class="has-childs">
 							<a href="{$_modx->makeUrl('45')}" title="Требы">Требы</a>
 							<ul>
-						<li><a href="{$_modx->makeUrl('103')}" title="Требы о здравии">Требы о здравии</a></li>
-						<li><a href="{$_modx->makeUrl('104')}" title="Требы о упокоении">Требы о упокоении</a></li>
-						<li><a href="{$_modx->makeUrl('109')}" title="Поставить свечу">Поставить свечу</a></li>
+								<li class="has-childs">
+									<a href="{$_modx->makeUrl('103')}" title="Требы о здравии">Требы о здравии</a>
+									<ul>
+										<li><a href="{$_modx->makeUrl('103')}#zapiski-zdravie" title="Записки о здравии">Записки о здравии</a></li>
+										<li><a href="{$_modx->makeUrl('103')}#molebny-zdravie" title="Молебны о здравии">Молебны о здравии</a></li>
+										<li><a href="{$_modx->makeUrl('103')}#sorokoust-zdravie" title="Сорокоуст о здравии">Сорокоуст о здравии</a></li>
+									</ul>
+								</li>
+								<li><a href="{$_modx->makeUrl('104')}" title="Требы о упокоении">Требы о упокоении</a></li>
+								<li><a href="{$_modx->makeUrl('109')}" title="Поставить свечу">Поставить свечу</a></li>
 							</ul>
 						</li>
 						<li><a href="{$_modx->makeUrl('4')}" title="Контакты">Контакты</a></li>
@@ -174,7 +181,14 @@
 				<li class="has-childs js-has-childs">
 					<a href="{$_modx->makeUrl('45')}" title="Требы">Требы</a>
 					<ul>
-						<li><a href="{$_modx->makeUrl('103')}" title="Требы о здравии">Требы о здравии</a></li>
+						<li class="has-childs js-has-childs">
+							<a href="{$_modx->makeUrl('103')}" title="Требы о здравии">Требы о здравии</a>
+							<ul>
+								<li><a href="{$_modx->makeUrl('103')}#zapiski-zdravie" title="Записки о здравии">Записки о здравии</a></li>
+								<li><a href="{$_modx->makeUrl('103')}#molebny-zdravie" title="Молебны о здравии">Молебны о здравии</a></li>
+								<li><a href="{$_modx->makeUrl('103')}#sorokoust-zdravie" title="Сорокоуст о здравии">Сорокоуст о здравии</a></li>
+							</ul>
+						</li>
 						<li><a href="{$_modx->makeUrl('104')}" title="Требы о упокоении">Требы о упокоении</a></li>
 						<li><a href="{$_modx->makeUrl('109')}" title="Поставить свечу">Поставить свечу</a></li>
 					</ul>

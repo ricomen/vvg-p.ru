@@ -551,7 +551,7 @@ function initPrayerForm() {
 }
 
 /**
- * Floating video banner: toggle mute/expand, close, click-outside to collapse.
+ * Floating video banner: toggle mute/expand, close hides widget, click-outside to collapse.
  * Requires jQuery (loaded before this file in footer).
  * @returns {void}
  */
@@ -567,12 +567,15 @@ function initVideoWidget() {
   $(".video-widget__close").on("click", function (t) {
     t.preventDefault();
     t.stopPropagation();
-    if ($widget.attr("data-state") === "default") {
-      $widget.hide();
-    } else {
-      $widget.attr("data-state", "default");
-      videoEl.muted = true;
-    }
+    // if ($widget.attr("data-state") === "default") {
+    //   $widget.hide();
+    // } else {
+    //   $widget.attr("data-state", "default");
+    //   videoEl.muted = true;
+    // }
+    $widget.attr("data-state", "default");
+    videoEl.muted = true;
+    $widget.hide();
     return false;
   });
 
