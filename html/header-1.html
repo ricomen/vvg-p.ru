@@ -1,0 +1,187 @@
+{set $homeId = 1}
+<header class="header">
+	<div class="header_container">
+		<div class="header__top">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="header_content">
+							<div class="logo_container">
+								{if $_modx->resource.id == $homeId}<div>{else}<a href="/">{/if}
+										<div class="logo"
+											style="height: 53px !important;float: left !important;margin-right: 5px !important;">
+											<img src="/theme/images/logo.jpg"
+												alt="{$homeId | resource : 'nazvaniehrama'}"
+												title="{$homeId | resource : 'nazvaniehrama'}"></div>
+										<div class="logo_text"
+											style="font-size: 15px !important;max-width: 288px !important;margin-left: 0px !important;">
+											{$homeId | resource : 'nazvaniehrama'}</div>
+										<div class="logo_text2" style="font-size: 12px;">{$homeId | resource :
+											'eparhiya'}</div>
+										<div class="logo_text2" style="font-size: 12px;">Московский Патриархат</div>
+										{if $_modx->resource.id == $homeId}</div>{else}</a>{/if}
+							</div>
+							<div class="header-buttons">
+								<div class="button donation_button" style="width: 200px;margin: 0 auto;">
+									<a data-fancybox="" data-src="#popup-donation" href="javascript:;"
+										title="Пожертвовать">Пожертвовать</a>
+								</div>
+								[[-- <div class="button donation_button" style="width: 200px;">
+									<a href="/treby" title="Требы">Требы</a>
+								</div> --]]
+							</div>
+							<div class="header-contacts">
+								<div class="header-contacts__contact">
+									<i class="fa fa-phone" aria-hidden="true"></i>
+									<div>Телефон: <a href="tel:{$homeId | resource : 'telefonhrama'}">{$homeId |
+											resource : 'telefonhrama'}</a></div>
+								</div>
+								<div class="header-contacts__contact">
+									<i class="fa fa-envelope-o" aria-hidden="true"></i>
+									<div>E-mail: <a href="mailto:{$homeId | resource : 'pochtahrama'}">{$homeId |
+											resource : 'pochtahrama'}</a></div>
+								</div>
+							</div>
+							<div class="hamburger ml-auto">
+								<i class="fa fa-bars" aria-hidden="true"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="header__bottom">
+			<div class="container">
+				{set $needs = 0}
+				{if $_modx->resource.parent == 98}
+					{set $needs = 1}
+				{/if}
+				<nav class="main_nav_contaner">
+					<ul class="main_nav">
+						<li><a href="/" title="Главная">Главная</a></li>
+						<li class="has-childs">
+							<a href="{$_modx->makeUrl('9')}" title="О храме">О храме</a>
+							<ul>
+							    <li><a href="{$_modx->makeUrl('111')}" title="Настоятель">Настоятель</a></li>
+								<li><a href="{$_modx->makeUrl('81')}" title="История храма">История храма</a></li>
+								<li><a href="{$_modx->makeUrl('39')}" title="Новости">Новости</a></li>
+								<li><a href="{$_modx->makeUrl('83')}" title="Расписание Богослужений">Расписание Богослужений</a></li>
+								<li><a href="{$_modx->makeUrl('93')}" title="Видео">Видео</a></li>
+								<li><a href="{$_modx->makeUrl('89')}" title="Юридические данные">Юридические данные</a></li>
+							</ul>
+						</li>
+						<li {if $needs} class="active" {/if}><a href="{$_modx->makeUrl('98')}" title="Нужды храма" {if $needs} class="active" {/if}>Нужды храма</a></li>
+						[[--<li class="has-childs">
+							<a href="{$_modx->makeUrl('6')}" title="Строительство храма">Строительство храма</a>
+							<ul>
+								<li><a href="{$_modx->makeUrl('85')}" title="Проект и смета храма">Проект и смета
+										храма</a></li>
+								<li><a href="{$_modx->makeUrl('86')}" title="Отчеты о строительстве храма">Отчеты о
+										строительстве храма</a></li>
+							</ul>
+						</li>--]]
+						<li class="has-childs">
+							<a href="{$_modx->makeUrl('45')}" title="Требы">Требы</a>
+							<ul>
+						<li><a href="{$_modx->makeUrl('103')}" title="Требы о здравии">Требы о здравии</a></li>
+						<li><a href="{$_modx->makeUrl('104')}" title="Требы о упокоении">Требы о упокоении</a></li>
+						<li><a href="{$_modx->makeUrl('109')}" title="Поставить свечу">Поставить свечу</a></li>
+							</ul>
+						</li>
+						<li><a href="{$_modx->makeUrl('4')}" title="Контакты">Контакты</a></li>
+					</ul>
+				</nav>
+				<div class="header__social-links social-links social--secondary">
+					<!--noindex-->
+					{if ($homeId | resource : 'rutube')}
+					<a href="{$homeId | resource : 'rutube'}" rel="nofollow" target="_blank">
+						<svg idth="800px" height="512" viewBox="0 0 192 192" xmlns="http://www.w3.org/2000/svg"
+							xml:space="preserve" fill="none">
+							<path fill="#ffffff"
+								d="M128.689 47.57H20.396v116.843h30.141V126.4h57.756l26.352 38.013h33.75l-29.058-38.188c9.025-1.401 15.522-4.73 19.493-9.985 3.97-5.255 5.956-13.664 5.956-24.875v-8.759c0-6.657-.721-11.912-1.985-15.941-1.264-4.029-3.43-7.533-6.498-10.686-3.249-2.978-6.858-5.08-11.19-6.481-4.332-1.226-9.747-1.927-16.424-1.927zm-4.873 53.08H50.537V73.321h73.279c4.15 0 7.038.7 8.482 1.927 1.444 1.226 2.347 3.503 2.347 6.832v9.81c0 3.503-.903 5.78-2.347 7.006s-4.331 1.752-8.482 1.752z"
+								style="display:inline;fill:none;stroke:#000000;stroke-width:12;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+								transform="translate(1.605 -1.99)" />
+							<path fill="#F41240"
+								d="M162.324 45.568c5.52 0 9.998-4.477 9.998-10s-4.478-10-9.998-10c-5.524 0-10.002 4.477-10.002 10s4.478 10 10.002 10z"
+								style="display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:10.6667;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+								transform="translate(1.605 -1.99)" />
+						</svg>
+					</a>
+					{/if}
+					{if ($homeId | resource : 'youtube')}
+					<a href="{$homeId | resource : 'youtube'}" rel="nofollow" target="_blank">
+						<svg height="512" viewBox="0 0 24 24" width="512" xmlns="http://www.w3.org/2000/svg">
+							<path
+								d="M.522 17.874c.49 1.738 1.989 2.056 2.089 2.117 2.467.672 16.295.674 18.799 0 1.715-.496 2.03-2.017 2.089-2.117.653-3.474.696-8.003-.03-11.945l.03.196c-.49-1.738-1.989-2.056-2.089-2.117-2.434-.661-16.298-.686-18.799 0C.896 4.505.581 6.025.522 6.125c-.699 3.651-.734 7.84 0 11.749zm9.086-2.223V8.358l6.266 3.652z"
+								fill="#e53935"></path>
+						</svg>
+					</a>
+					{/if}
+					{if ($homeId | resource : 'vk.com')}
+					<a href="{$homeId | resource : 'vk.com'}" rel="nofollow" target="_blank">
+						<svg height="512" viewBox="0 0 24 24" width="512" xmlns="http://www.w3.org/2000/svg">
+							<path
+								d="M19.915 13.028c-.388-.49-.277-.708 0-1.146.005-.005 3.208-4.431 3.538-5.932l.002-.001c.164-.547 0-.949-.793-.949h-2.624c-.668 0-.976.345-1.141.731 0 0-1.336 3.198-3.226 5.271-.61.599-.892.791-1.225.791-.164 0-.419-.192-.419-.739V5.949c0-.656-.187-.949-.74-.949H9.161c-.419 0-.668.306-.668.591 0 .622.945.765 1.043 2.515v3.797c0 .832-.151.985-.486.985-.892 0-3.057-3.211-4.34-6.886-.259-.713-.512-1.001-1.185-1.001H.9c-.749 0-.9.345-.9.731 0 .682.892 4.073 4.148 8.553C6.318 17.343 9.374 19 12.154 19c1.671 0 1.875-.368 1.875-1.001 0-2.922-.151-3.198.686-3.198.388 0 1.056.192 2.616 1.667C19.114 18.217 19.407 19 20.405 19h2.624c.748 0 1.127-.368.909-1.094-.499-1.527-3.871-4.668-4.023-4.878z"
+								fill="#4b729f"></path>
+						</svg>
+					</a>
+					{/if}
+					{if ($homeId | resource : 'ok.ru')}
+					<a href="{$homeId | resource : 'ok.ru'}" rel="nofollow" target="_blank">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.479 512.479">
+							<g fill="#ff9800">
+								<path
+									d="M256.239 277.333c76.583 0 138.667-62.083 138.667-138.667S332.823 0 256.239 0 117.573 62.083 117.573 138.667c.094 76.544 62.122 138.572 138.666 138.666zm0-213.333c41.237 0 74.667 33.429 74.667 74.667s-33.429 74.667-74.667 74.667-74.667-33.429-74.667-74.667S215.002 64 256.239 64z">
+								</path>
+								<path
+									d="M392.069 343.04a53.72 53.72 0 0024.171-44.8 38.698 38.698 0 00-21.696-35.307 40.534 40.534 0 00-42.667 4.011c-56.983 41.543-134.27 41.543-191.253 0a40.747 40.747 0 00-42.667-4.011 38.74 38.74 0 00-21.717 35.285 53.78 53.78 0 0024.171 44.8 246.275 246.275 0 0062.507 29.867 212.318 212.318 0 0011.627 3.243l-64.469 63.04c-16.912 16.409-17.321 43.42-.912 60.333 16.409 16.912 43.42 17.321 60.333.912.352-.342.698-.689 1.038-1.043l65.707-68.011 65.835 68.139c16.395 16.925 43.407 17.355 60.332.96 16.925-16.395 17.355-43.407.96-60.332a42.943 42.943 0 00-1.047-1.044l-64.363-62.976a270.92 270.92 0 0011.669-3.264 245.352 245.352 0 0062.441-29.802z">
+								</path>
+							</g>
+						</svg>
+					</a>
+					{/if}
+					<!--/noindex-->
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+<div class="menu d-flex flex-column align-items-center justify-content-center">
+	<div class="menu_content">
+		<nav class="menu_nav">
+			<ul>
+				<li><a href="/" title="Главная">Главная</a></li>
+				<li class="has-childs js-has-childs">
+					<a href="{$_modx->makeUrl('9')}" title="О храме">О храме</a>
+					<ul>
+					    <li><a href="{$_modx->makeUrl('111')}" title="Настоятель">Настоятель</a></li>
+						<li><a href="{$_modx->makeUrl('81')}" title="История храма">История храма</a></li>
+						<li><a href="{$_modx->makeUrl('39')}" title="Новости">Новости</a></li>
+						<li><a href="{$_modx->makeUrl('83')}" title="Расписание Богослужений">Расписание Богослужений</a></li>
+						<li><a href="{$_modx->makeUrl('93')}" title="Видео">Видео</a></li>
+						<li><a href="{$_modx->makeUrl('89')}" title="Юридические данные">Юридические данные</a></li>
+					</ul>
+				</li>
+				<li><a href="{$_modx->makeUrl('98')}" title="Нужды храма">Нужды храма</a></li>
+				[[--<li class="has-childs js-has-childs">
+					<a href="{$_modx->makeUrl('6')}" title="Строительство храма">Строительство храма</a>
+					<ul>
+						<li><a href="{$_modx->makeUrl('85')}" title="Проект и смета храма">Проект и смета храма</a></li>
+						<li><a href="{$_modx->makeUrl('86')}" title="Отчеты о строительстве храма">Отчеты о
+								строительстве храма</a></li>
+					</ul>
+				</li>--]]
+				<li class="has-childs js-has-childs">
+					<a href="{$_modx->makeUrl('45')}" title="Требы">Требы</a>
+					<ul>
+						<li><a href="{$_modx->makeUrl('103')}" title="Требы о здравии">Требы о здравии</a></li>
+						<li><a href="{$_modx->makeUrl('104')}" title="Требы о упокоении">Требы о упокоении</a></li>
+						<li><a href="{$_modx->makeUrl('109')}" title="Поставить свечу">Поставить свечу</a></li>
+					</ul>
+				</li>
+				<li><a href="{$_modx->makeUrl('4')}" title="Контакты">Контакты</a></li>
+			</ul>
+		</nav>
+	</div>
+	<div class="menu_close"><i class="fa fa-times" aria-hidden="true"></i></div>
+</div>
