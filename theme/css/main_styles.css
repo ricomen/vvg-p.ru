@@ -63,6 +63,7 @@
   --card-bg: #f2efe9;
   --btn-bg: #6a8473;
   --progress-bar-color-primary: #76d3fc;
+  --input-bg-color-primary: #76d3fc;
   --progress-bar-color-grey: #dddddd;
   --danger-color: #dc3545;
   --bg-secondary: #3C5B70;
@@ -3188,14 +3189,15 @@ p.videowraplists {
 }
 
 .video-widget {
+    --border-radius: 20px;
+    --border-width: 5px;
     position:fixed;
     left:0;
     bottom:0;
-    z-index:999999;
+    z-index:4000;
 }
 .video-widget__container {
     font-family:Helvetica;
-    z-index:999999;
     overflow:hidden;
     border-style:solid;
     background:#eee;
@@ -3220,7 +3222,7 @@ p.videowraplists {
     position:absolute;
     left:20px;
     bottom:50px;
-    border-radius:20px;
+    border-radius:var(--border-radius);
     border-width:5px;
     width:130px;
     height:180px;
@@ -3255,6 +3257,7 @@ p.videowraplists {
     -o-transition: opacity 0.4s ease-in-out 0s;
     transition: opacity 0.4s ease-in-out 0s;
     opacity: 0.9;
+    border-radius: calc(var(--border-radius) - var(--border-width));
 }
 
 .video-widget__close {
@@ -3542,21 +3545,26 @@ body.compensate-for-scrollbar .header{
   display: flex;
   flex-direction: column;
 }
-.section-prayer__aside > input {
-  display: block;
+.section-prayer__aside > input,
+.section-prayer__names input,
+.section-prayer__footer-fields input,
+.section-prayer-video-respond > input {
   width: 100%;
   border: none;
   outline: none;
-  background: var(--progress-bar-color-primary);
+  background: var(--input-bg-color-primary);
   border-radius: 4px;
   font-size: 20px;
   color: var(--text-primary);
   padding: 4px 20px;
   margin: 0px 2px;
 }
-.section-prayer__aside > input::placeholder {
-    color: #b4b0b0;
-  }
+.section-prayer__aside > input::placeholder,
+.section-prayer__names input::placeholder,
+.section-prayer__footer-fields input::placeholder,
+.section-prayer-video-respond > input::placeholder {
+  color: #b4b0b0;
+}
 .section-prayer__aside > p {
   font-size: 25px;
   color: var(--text-primary);
@@ -3591,21 +3599,12 @@ body.compensate-for-scrollbar .header{
   gap: 8px;
 }
 .section-prayer__names input {
-  display: block;
   width: calc(100% - 4px);
-  border: none;
-  outline: none;
-  background: var(--progress-bar-color-primary);
-  border-radius: 4px;
-  font-size: 20px;
-  color: var(--text-primary);
   padding: 10px 20px;
   text-align: center;
-  margin: 0px 2px;
 }
 .section-prayer__names input::placeholder {
   text-transform: uppercase;
-  color: #b4b0b0;
 }
 .section-prayer__names label {
   display: block;
@@ -3614,22 +3613,6 @@ body.compensate-for-scrollbar .header{
 .section-prayer__names .section-prayer__name-row {
   position: relative;
 }
-.section-prayer__footer-fields input {
-    margin: 0px 2px;
-    background: #f6eec3;
-    border-radius: 4px;
-    color: #b4b0b0;
-    font-family: Arial;
-    padding: 10px 20px;
-    border: none;
-    border-bottom: 2px solid #bcbbbb;
-    text-align: left;
-    text-transform: uppercase;
-    font-size: 18px;
-    padding-bottom: 4px;
-    width: 100%;
-    outline: none;
-  }
 .section-prayer__names .section-prayer__remove-name {
   position: absolute;
   top: 50%;
@@ -3717,6 +3700,13 @@ body.compensate-for-scrollbar .header{
 }
 .section-prayer__item.active{
     background: #ebf1ef;
+}
+
+.section-prayer__item.active button,
+.section-prayer-item__add button:hover {
+  color: #fff;
+  background: #d6b574;
+  cursor: pointer;
 }
 .section-prayer__footer button:hover{
     background: #2e5b84;
@@ -3822,20 +3812,8 @@ body.compensate-for-scrollbar .header{
   display: flex;
   align-items: center;
   justify-content: center;
-  border: none;
-  outline: none;
-  background: var(--progress-bar-color-primary);
-  border-radius: 4px;
-  font-size: 20px;
-  color: var(--text-primary);
-  padding: 4px 20px;
-  width: 100%;
-      max-width: calc(100% - 96px);
-  
+  max-width: calc(100% - 96px);
 }
-.section-prayer-video-respond > input::placeholder {
-    color: #b4b0b0;
-  }
 
 .custom-checkbox {
   position: relative;

@@ -266,7 +266,7 @@ function initPrayerForm() {
     itemCounters?.forEach((countElement) => {
       const minusButton = countElement.querySelector("button:first-child");
       const plusButton = countElement.querySelector("button:nth-child(3)");
-      const MAX_COUNT = countElement.dataset.max || 10;
+      const MAX_COUNT = parseInt(countElement.dataset.max, 10);
       const inputElement = countElement.querySelector('input[type="text"]');
 
       minusButton.addEventListener("click", (e) => {
@@ -286,7 +286,7 @@ function initPrayerForm() {
         e.preventDefault();
         let currentValue = parseInt(inputElement.value, 10);
         if (isNaN(currentValue)) return (currentValue = 1);
-        if (currentValue >= MAX_COUNT) return (currentValue = MAX_COUNT);
+        if (!isNaN(MAX_COUNT) && currentValue >= MAX_COUNT) return (currentValue = MAX_COUNT);
 
         inputElement.value = ++currentValue;
         logicAfterCalculateValue({
