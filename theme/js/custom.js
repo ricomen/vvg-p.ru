@@ -101,8 +101,6 @@ $('.js-select-term').on('change', function(){
  });
  
  
- 
-    
      // fancybox 3 on Russian
      $.fancybox.defaults.i18n.ru = {
          CLOSE: "Закрыть",
@@ -331,43 +329,6 @@ $('.js-select-term').on('change', function(){
          $('+ ul', this).toggle();
      })
      $('input[data-ru-name="Телефон"]').mask("+7 (999) 999-99-99");
- });
- 
- const itemCounters = Array.from(document.querySelectorAll(".count"));
- 
- itemCounters?.forEach((countElement) => {
-   const minusButton = countElement.querySelector("button:first-child");
-   const plusButton = countElement.querySelector("button:nth-child(3)");
-   const maxCount = countElement.dataset.max || 10;
-   const inputElement = countElement.querySelector('input[type="text"]');
- 
-   minusButton.addEventListener("click", (e) => {
-     e.preventDefault();
-     let currentValue = parseInt(inputElement.value, 10);
-     if (isNaN(currentValue) || currentValue < 1) return (currentValue = 1);
- 
-     inputElement.value = --currentValue;
-     logicAfterCalcutalteValue({
-       value: inputElement.value,
-     });
-   });
- 
-   plusButton.addEventListener("click", (e) => {
-     e.preventDefault();
-     let currentValue = parseInt(inputElement.value, 10);
-     if (isNaN(currentValue)) return (currentValue = 1);
-     if (currentValue >= maxCount) return (currentValue = maxCount);
- 
-     inputElement.value = ++currentValue;
-     logicAfterCalcutalteValue({
-       value: inputElement.value,
-     });
-   });
- 
-   const logicAfterCalcutalteValue = ({ value }) => {
-     inputElement.setAttribute("value", value);
-     inputElement.dispatchEvent(new Event("change", { bubbles: true }));
-   };
  });
  
  const additionalNames = document.querySelector(".section-prayer__names");

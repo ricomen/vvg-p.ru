@@ -150,6 +150,9 @@ function initPrayerForm() {
     const totalNodeInput = prayerForm.querySelector(".cloud-donation-sum");
     const donationInput = prayerForm.querySelector("input[donate-to-good-causes]");
     const videoReportSection = prayerForm.querySelector(".section-prayer-video-respond");
+    if (videoReportSection) {
+      videoReportSection.hidden = true;
+    }
     const videoCheckbox = videoReportSection.querySelector("input[type='checkbox']");
     const videoEmailInput = videoReportSection.querySelector("input[name='e-mail']");
 
@@ -279,6 +282,7 @@ function initPrayerForm() {
       });
 
       plusButton.addEventListener("click", (e) => {
+        console.log('plusButton.addEventListener', e.target);
         e.preventDefault();
         let currentValue = parseInt(inputElement.value, 10);
         if (isNaN(currentValue)) return (currentValue = 1);
@@ -360,11 +364,14 @@ function initPrayerForm() {
         nameValues.push("");
         label.classList.add("section-prayer__label", "section-prayer__name-row");
         const input = document.createElement("input");
-        input.placeholder = "Введите имя";
+        input.placeholder = " ";
         input.name = "name[]";
         input.id = id;
         input.required = true;
         input.maxLength = 20;
+        const placeholder = document.createElement("span");
+        placeholder.className = "section-prayer__floating-placeholder";
+        placeholder.textContent = "Введите имя";
         const removeBtn = document.createElement("button");
         removeBtn.type = "button";
         removeBtn.className = "section-prayer__remove-name";
@@ -372,6 +379,7 @@ function initPrayerForm() {
         removeBtn.setAttribute("aria-label", "Удалить имя");
         removeBtn.textContent = "−";
         label.appendChild(input);
+        label.appendChild(placeholder);
         label.appendChild(removeBtn);
         additionalNames.appendChild(label);
         updateRemoveButtonsVisibility();
