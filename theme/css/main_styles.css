@@ -69,9 +69,14 @@
     --progress-bar-color-grey: #dddddd;
     --danger-color: #dc3545;
     --bg-secondary: #3C5B70;
+
+    --button-bg: #0c3e6e;
+    --button-hover-bg: #2e5b84;
+    --button-border: #e9ecef;
 }
 
 * {
+
     margin: 0;
     padding: 0;
     -webkit-font-smoothing: antialiased;
@@ -1686,7 +1691,7 @@ button {
 }
 
 .news_post_col {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 
 .news_post_title a {
@@ -2347,10 +2352,6 @@ button {
     padding-top: 8px;
 }
 
-.treby-grid {
-    margin-bottom: 20px;
-}
-
 .logo {
     margin-top: 5px;
 }
@@ -2669,10 +2670,12 @@ a.bg-secondary:hover {
 }
 
 @media (max-width: 500px) {
+
     .table--donations-detailed tr td:first-child,
     .table--donations-detailed tr td:nth-child(4) {
-      display: none;
+        display: none;
     }
+
     .table--donations thead {
         display: none;
     }
@@ -3079,17 +3082,46 @@ position: absolute !important;
 }
 
 .treby-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.treby-grid__item {
+    min-width: 0;
+}
+
+.treb {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 8px;
+    padding: 10px;
+    border: 1px solid var(--btn-border);
+    border-radius: 5px;
+    background-color: var(--button-bg);
+    transition: background-color 0.3s ease;
 }
 
-.treby-grid .button {
-    width: 275px;
-    margin: 5px;
+.treb:hover {
+    background-color: var(--button-hover-bg);
 }
 
-.treby-grid .button a {
-    color: white;
+.treb__image {
+    width: 100%;
+    height: 100% !important;
+    object-fit: cover;
+}
+
+.treb__label {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1;
+    color: var(--text-white);
+    text-transform: uppercase;
 }
 
 table {
@@ -3206,14 +3238,15 @@ table p {}
 }
 
 .video-list {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
 .videolist_tpl {
-    padding: 5px;
-    width: 32%;
-    min-width: 300px;
+    min-width: 0;
+    padding: 0;
 }
 
 .videolist_tpl img {
@@ -3785,7 +3818,7 @@ body.compensate-for-scrollbar .header {
     flex-direction: column;
 }
 
-.section-prayer__aside>input,
+.section-prayer__aside>.float-field .form_input,
 .section-prayer__names input,
 .section-prayer__footer-fields input,
 .section-prayer-video-respond>input {
@@ -3852,13 +3885,35 @@ body.compensate-for-scrollbar .header {
     text-align: center;
 }
 
-.section-prayer__names input::placeholder {
-    text-transform: uppercase;
+.section-prayer__names .float-field .form_input {
+    text-align: left;
+    padding-right: 48px;
 }
 
-.section-prayer__names label {
-    display: block;
-    position: relative;
+.section-prayer__footer-fields .float-field label,
+.section-prayer__names .float-field label,
+.section-prayer__aside .float-field label {
+    margin: 0;
+    font-size: 18px;
+    color: var(--text-primary);
+    background: var(--input-bg-color-primary);
+}
+
+.section-prayer__names .float-field label {
+    top: calc(50% - 2px);
+}
+
+.section-prayer input:focus+label,
+.section-prayer input:not(:placeholder-shown)+label {
+    border-top-left-radius: 14px;
+    border-top-right-radius: 14px;
+    color: var(--text-primary) !important;
+}
+
+
+.section-prayer__names .float-field .form_input::placeholder,
+.section-prayer__names .float-field .form_input::-webkit-input-placeholder {
+    color: transparent !important;
 }
 
 .section-prayer__names .section-prayer__name-row {
@@ -3882,11 +3937,7 @@ body.compensate-for-scrollbar .header {
     text-align: center;
 }
 
-.section-prayer__names label:not(:last-child) {
-    margin-bottom: 8px;
-}
-
-.section-prayer__names label::after {
+.section-prayer__names .section-prayer__name-row::after {
     content: "";
     display: block;
     margin-top: 2px;
@@ -3917,7 +3968,10 @@ body.compensate-for-scrollbar .header {
     flex-direction: column;
     align-items: center;
     grid-column: span 2;
-    gap: 40px;
+}
+
+.section-prayer__footer-fields {
+    margin-top: 40px;
 }
 
 .section-prayer__footer p {
@@ -3946,10 +4000,9 @@ body.compensate-for-scrollbar .header {
     outline: none;
     border-radius: 10px;
     padding: 10px 20px;
+    margin-top: 20px;
     text-transform: uppercase;
-
     background: #0c3e6e;
-
     color: #fff;
     font-size: 20px;
     font-weight: 600;
@@ -4297,9 +4350,27 @@ body.compensate-for-scrollbar .header {
 
 
 @media only screen and (max-width: 992px) {
+    .menu {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        height: 100vh;
+        height: 100dvh;
+        max-height: 100dvh;
+    }
+
     .menu.active {
         justify-content: flex-start !important;
         padding-top: 40px;
+    }
+
+    .menu_content {
+        flex: 1 1 auto;
+        min-height: 0;
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
     }
 
     .menu_nav {
@@ -4554,5 +4625,28 @@ body.compensate-for-scrollbar .header {
     .cookie-banner p {
         font-size: 12px;
         line-height: 1.33;
+    }
+}
+
+
+/* sm: 575.98px;   < sm */
+/* md: 767.98px;   < md */
+/* lg: 991.98px;   < lg */
+/* xl: 1199.98px;  < xl */
+/* xxl: 1399.98px; < xxl */
+
+@media (min-width: 767.98px) {
+    .treby-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .video-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 991.98px) {
+    .treby-grid {
+        grid-template-columns: repeat(4, 1fr);
     }
 }

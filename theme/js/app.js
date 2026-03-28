@@ -360,28 +360,30 @@ function initPrayerForm() {
 
       const createNodeHandler = (id) => {
         if (id >= MAX_NAMES_COUNT) return (buttonAddName.style.display = "none");
-        const label = document.createElement("label");
+        const row = document.createElement("div");
         nameValues.push("");
-        label.classList.add("section-prayer__label", "section-prayer__name-row");
+        row.classList.add("section-prayer__name-row", "float-field");
         const input = document.createElement("input");
+        input.type = "text";
+        input.className = "form_input";
         input.placeholder = " ";
         input.name = "name[]";
-        input.id = id;
+        input.id = `prayer-name-${id}-${Date.now()}`;
         input.required = true;
         input.maxLength = 20;
-        const placeholder = document.createElement("span");
-        placeholder.className = "section-prayer__floating-placeholder";
-        placeholder.textContent = "Введите имя";
+        const floatLabel = document.createElement("label");
+        floatLabel.setAttribute("for", input.id);
+        floatLabel.textContent = "Введите имя";
         const removeBtn = document.createElement("button");
         removeBtn.type = "button";
         removeBtn.className = "section-prayer__remove-name";
         removeBtn.title = "Удалить";
         removeBtn.setAttribute("aria-label", "Удалить имя");
         removeBtn.textContent = "−";
-        label.appendChild(input);
-        label.appendChild(placeholder);
-        label.appendChild(removeBtn);
-        additionalNames.appendChild(label);
+        row.appendChild(input);
+        row.appendChild(floatLabel);
+        row.appendChild(removeBtn);
+        additionalNames.insertBefore(row, buttonAddName);
         updateRemoveButtonsVisibility();
       };
 
@@ -629,6 +631,106 @@ function initVideoWidget() {
 }
 
 /**
+ * jQuery accordion.
+ * Markup:
+ * - root:        [data-accordion]
+ * - item:        [data-accordion-item]
+ * - header btn:  [data-accordion-trigger]
+ * - panel:       [data-accordion-panel]
+ * Options:
+ * - data-accordion="single" | "multi" (default: single)
+ * - data-accordion-speed="200" (ms, default: 200)
+ * @returns {void}
+ */
+function initAccordionJq() {
+  if (typeof window.jQuery === "undefined") return;
+  const $ = window.jQuery;
+
+  const $accordions = $("[data-accordion]");
+  if (!$accordions.length) return;
+
+  $accordions.each(function () {
+    const $root = $(this);
+    const mode = ($root.attr("data-accordion") || "single").toLowerCase();
+    const speedRaw = parseInt($root.attr("data-accordion-speed"), 10);
+    const speed = Number.isFinite(speedRaw) ? speedRaw : 200;
+
+    const $items = $root.find("[data-accordion-item]");
+
+    const setPanelHeight = (panelEl, valuePx) => {
+      panelEl.style.maxHeight = valuePx;
+    };
+
+    const openItem = ($item) => {
+      const triggerEl = $item.find("[data-accordion-trigger]").first().get(0);
+      const panelEl = $item.find("[data-accordion-panel]").first().get(0);
+      if (!triggerEl || !panelEl) return;
+
+      $item.addClass("is-open");
+      triggerEl.setAttribute("aria-expanded", "true");
+      panelEl.setAttribute("aria-hidden", "false");
+      panelEl.style.transitionDuration = `${speed}ms`;
+      setPanelHeight(panelEl, `${panelEl.scrollHeight}px`);
+    };
+
+    const closeItem = ($item) => {
+      const triggerEl = $item.find("[data-accordion-trigger]").first().get(0);
+      const panelEl = $item.find("[data-accordion-panel]").first().get(0);
+      if (!triggerEl || !panelEl) return;
+
+      // set current height first so transition always plays
+      panelEl.style.transitionDuration = `${speed}ms`;
+      setPanelHeight(panelEl, `${panelEl.scrollHeight}px`);
+
+      window.requestAnimationFrame(() => {
+        $item.removeClass("is-open");
+        triggerEl.setAttribute("aria-expanded", "false");
+        panelEl.setAttribute("aria-hidden", "true");
+        setPanelHeight(panelEl, "0px");
+      });
+    };
+
+    // init: set initial state (closed by default)
+    $items.each(function () {
+      const $item = $(this);
+      const $trigger = $item.find("[data-accordion-trigger]").first();
+      const $panel = $item.find("[data-accordion-panel]").first();
+
+      if (!$trigger.length || !$panel.length) return;
+
+      const isOpen = $item.hasClass("is-open") || $trigger.attr("aria-expanded") === "true";
+      $trigger.attr("aria-expanded", isOpen ? "true" : "false");
+      $panel.attr("aria-hidden", isOpen ? "false" : "true");
+      $panel.get(0).style.transitionDuration = `${speed}ms`;
+      $panel.get(0).style.maxHeight = isOpen ? `${$panel.get(0).scrollHeight}px` : "0px";
+    });
+
+    $root.on("click", "[data-accordion-trigger]", function (e) {
+      e.preventDefault();
+
+      const $trigger = $(this);
+      const $item = $trigger.closest("[data-accordion-item]");
+      const $panel = $item.find("[data-accordion-panel]").first();
+      if (!$panel.length) return;
+
+      const isOpen = $item.hasClass("is-open");
+
+      if (mode !== "multi") {
+        $items.not($item).filter(".is-open").each(function () {
+          closeItem($(this));
+        });
+      }
+
+      if (isOpen) {
+        closeItem($item);
+      } else {
+        openItem($item);
+      }
+    });
+  });
+}
+
+/**
  * Initializes cookie consent banner visibility and persistence.
  * @returns {void}
  */
@@ -689,5 +791,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initScrollToTop();
   initPrayerForm();
   initVideoWidget();
+  initAccordionJq();
   initCookieBanner();
 });

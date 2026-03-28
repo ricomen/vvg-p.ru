@@ -85,20 +85,34 @@ $('.js-select-term').on('change', function(){
      });
  });
  
- // highlight active menu item
- var url = window.location.pathname;
- 
- if(url === '/'){
- 
- }else{
-     url = url.replace(/^\//,'');
- }
- $( ".main_nav_contaner a" ).each(function(index) {
-     if (url.indexOf($(this).attr('href')) >= 0){
-         $(this).addClass('active');
-         $(this).parents('li').addClass('active');
-     }
- });
+// highlight active menu item
+var url = window.location.pathname || '/';
+url = url.replace(/\/$/, '');
+if (url === '') url = '/';
+
+// Clear previous state (important for 404 / unmatched pages)
+$( ".main_nav_contaner .active" ).removeClass('active');
+
+$( ".main_nav_contaner a" ).each(function(index) {
+    var href = $(this).attr('href') || '';
+
+    if (href === '#' || href.indexOf('javascript:') === 0) return;
+
+    // Ignore hash/query for matching path
+    href = href.split('#')[0].split('?')[0];
+
+    href = href.replace(/\/$/, '');
+    if (href === '') href = '/';
+    if (href.charAt(0) !== '/') href = '/' + href;
+
+    var isHome = href === '/';
+    // var isMatch = isHome ? url === '/' : (url === href || url.indexOf(href + '/') === 0);
+    var isMatch = isHome ? url === '/' : (url === href);
+    if (isMatch){
+        $(this).addClass('active');
+        $(this).parents('li').addClass('active');
+    }
+});
  
  
      // fancybox 3 on Russian
