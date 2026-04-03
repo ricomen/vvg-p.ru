@@ -73,6 +73,8 @@
     --button-bg: #0c3e6e;
     --button-hover-bg: #2e5b84;
     --button-border: #e9ecef;
+
+    --accordion-separator-color: #212529;
 }
 
 * {
@@ -3096,7 +3098,6 @@ position: absolute !important;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     text-align: center;
     gap: 8px;
     padding: 10px;
@@ -3122,6 +3123,119 @@ position: absolute !important;
     line-height: 1;
     color: var(--text-white);
     text-transform: uppercase;
+}
+
+/* модификатор: картинка на всю ширину, подпись на своем фоне */
+.treb--full {
+    padding: 0;
+    gap: 0;
+    text-align: left;
+    overflow: hidden;
+    border-radius: 25px;
+}
+
+.treb--full:hover .treb__label{
+    background-color: var(--button-hover-bg);
+}
+
+.treb--full .treb__image {
+    display: block;
+    width: 100%;
+    height: auto !important;
+}
+
+.treb--full .treb__label {
+    display: block;
+    flex-grow: 1;
+    width: 100%;
+    padding: 18px 12px;
+    background: var(--button-bg);
+}
+
+/* accordion */
+.accordion {
+}
+
+.accordion__item {
+    position: relative;
+    border: 1px solid var(--btn-border);
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff;
+}
+
+.accordion__item:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    bottom: 0;
+    height: 1px;
+    background: var(--accordion-separator-color);
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.accordion__trigger {
+    width: 100%;
+    border: 0;
+    background: transparent;
+    padding: 14px 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-align: left;
+    cursor: pointer;
+}
+
+.accordion__trigger:focus,
+.accordion__trigger:focus-visible {
+    outline: none;
+    box-shadow: none;
+}
+
+.accordion__title {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.accordion__icon {
+    margin-left: auto;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid var(--btn-border);
+    background: var(--button-bg);
+    position: relative;
+    flex: 0 0 34px;
+    transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.accordion__icon::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid var(--text-white);
+    border-bottom: 2px solid var(--text-white);
+    transform: translate(-50%, -60%) rotate(45deg);
+}
+
+.accordion__trigger[aria-expanded="true"] .accordion__icon {
+    transform: rotate(180deg);
+}
+
+.accordion__panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease;
+}
+
+.accordion__content {
+    padding: 0 14px 14px 14px;
+    color: var(--text-secondary-black) !important;
 }
 
 table {

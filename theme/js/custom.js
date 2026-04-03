@@ -85,8 +85,8 @@ $('.js-select-term').on('change', function(){
      });
  });
  
-// highlight active menu item
-var url = window.location.pathname || '/';
+ // highlight active menu item
+ var url = window.location.pathname || '/';
 url = url.replace(/\/$/, '');
 if (url === '') url = '/';
 
@@ -108,12 +108,12 @@ $( ".main_nav_contaner a" ).each(function(index) {
     var isHome = href === '/';
     // var isMatch = isHome ? url === '/' : (url === href || url.indexOf(href + '/') === 0);
     var isMatch = isHome ? url === '/' : (url === href);
+
     if (isMatch){
         $(this).addClass('active');
         $(this).parents('li').addClass('active');
     }
 });
- 
  
      // fancybox 3 on Russian
      $.fancybox.defaults.i18n.ru = {
