@@ -141,6 +141,7 @@ function initScrollToTop() {
  * @returns {void}
  */
 function initPrayerForm() {
+  //const prayerForm = document.forms.prayer;
   const prayerForm = document.querySelector('[data-form="treby"]');
 
   if (prayerForm) {
@@ -150,18 +151,19 @@ function initPrayerForm() {
     const totalNodeInput = prayerForm.querySelector(".cloud-donation-sum");
     const donationInput = prayerForm.querySelector("input[donate-to-good-causes]");
     const videoReportSection = prayerForm.querySelector(".section-prayer-video-respond");
-    if (videoReportSection) {
-      videoReportSection.hidden = true;
-    }
-    const videoCheckbox = videoReportSection.querySelector("input[type='checkbox']");
-    const videoEmailInput = videoReportSection.querySelector("input[name='e-mail']");
+    const videoCheckbox = videoReportSection?.querySelector("input[type='checkbox']") ?? null;
+    const videoEmailInput =
+      videoReportSection?.querySelector('input[name="email"], input[name="e-mail"]') ?? null;
 
     const updateVideoEmailRequired = () => {
       if (!videoEmailInput) return;
       if (videoCheckbox && videoCheckbox.checked) {
+        videoEmailInput.disabled = false;
         videoEmailInput.setAttribute("required", "");
       } else {
+        videoEmailInput.disabled = true;
         videoEmailInput.removeAttribute("required");
+        videoEmailInput.value = "";
       }
     };
 
@@ -266,7 +268,7 @@ function initPrayerForm() {
     itemCounters?.forEach((countElement) => {
       const minusButton = countElement.querySelector("button:first-child");
       const plusButton = countElement.querySelector("button:nth-child(3)");
-      const MAX_COUNT = parseInt(countElement.dataset.max, 10);
+      const MAX_COUNT = countElement.dataset.max;
       const inputElement = countElement.querySelector('input[type="text"]');
 
       minusButton.addEventListener("click", (e) => {
@@ -282,7 +284,6 @@ function initPrayerForm() {
       });
 
       plusButton.addEventListener("click", (e) => {
-        console.log('plusButton.addEventListener', e.target);
         e.preventDefault();
         let currentValue = parseInt(inputElement.value, 10);
         if (isNaN(currentValue)) return (currentValue = 1);
@@ -559,7 +560,6 @@ function initPrayerForm() {
 
   }
 }
-
 /**
  * Floating video banner: toggle mute/expand, close hides widget, click-outside to collapse.
  * Requires jQuery (loaded before this file in footer).
