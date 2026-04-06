@@ -3123,6 +3123,7 @@ position: absolute !important;
     line-height: 1;
     color: var(--text-white);
     text-transform: uppercase;
+    word-break: break-word;
 }
 
 /* модификатор: картинка на всю ширину, подпись на своем фоне */
