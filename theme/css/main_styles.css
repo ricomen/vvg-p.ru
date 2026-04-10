@@ -4150,15 +4150,17 @@ body.compensate-for-scrollbar .header {
     margin: 0 auto;
 }
 
-.section-prayer__item.active {
+.section-prayer-item.active {
     background: #ebf1ef;
 }
+.section-prayer-item {
+    cursor: pointer;
+}
 
-.section-prayer__item.active button,
+.section-prayer-item.active button,
 .section-prayer-item__add:not(.active) button:hover {
     color: #fff;
     background: #d6b574;
-    cursor: pointer;
 }
 
 .section-prayer__footer button:hover {
@@ -4169,6 +4171,7 @@ body.compensate-for-scrollbar .header {
     text-align: center;
     flex: 1 1 auto;
     color: #bcbbbb;
+    transition: color 300ms ease;
 }
 
 .section-prayer-item__info h3,
@@ -4176,12 +4179,16 @@ body.compensate-for-scrollbar .header {
     margin-top: 0;
     font-weight: 400;
     font-size: 24px;
-    color: #bcbbbb;
+    color: inherit;
 }
 
 .section-prayer-item__info p {
-    color: #bcbbbb;
+    color: inherit;
 
+}
+
+.section-prayer-item.active .section-prayer-item__info {
+    color: var(--text-primary);
 }
 
 .section-prayer-item__add {

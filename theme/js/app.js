@@ -504,8 +504,11 @@ function initPrayerForm() {
     });
     if (chosePrayerButtonsHandler) {
       chosePrayerButtonsHandler.addEventListener("click", (e) => {
-        const button = e.target.closest("button");
-        if (!button || !chosePrayerButtonsHandler.contains(button)) return;
+        const parentItem = e.target.closest(".section-prayer__item");
+        if (!parentItem || !chosePrayerButtonsHandler.contains(parentItem)) return;
+
+        const button = parentItem.querySelector("button");
+        if (!button) return;
 
         chosePrayerButtonsHandler
           .querySelectorAll("button")
@@ -515,8 +518,6 @@ function initPrayerForm() {
           });
 
         button.textContent = "Выбрано";
-
-        const parentItem = button.closest(".section-prayer__item");
 
         parentItem.classList.add("active");
 
