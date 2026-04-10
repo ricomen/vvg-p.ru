@@ -3090,6 +3090,16 @@ position: absolute !important;
     margin-bottom: 20px;
 }
 
+.treby-grid--about-the-temple .donation_button {
+    display: inline-flex;
+    margin-top: 0;
+    min-height: 50px;
+}
+.treby-grid--about-the-temple .donation_button a {
+    margin: auto;
+    line-height: 1.2;
+}
+
 .treby-grid__item {
     min-width: 0;
 }
@@ -4157,11 +4167,11 @@ body.compensate-for-scrollbar .header {
     cursor: pointer;
 }
 
-.section-prayer-item.active button,
+/* .section-prayer-item.active button,
 .section-prayer-item__add:not(.active) button:hover {
     color: #fff;
     background: #d6b574;
-}
+} */
 
 .section-prayer__footer button:hover {
     background: #2e5b84;
