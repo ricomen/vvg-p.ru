@@ -44,7 +44,7 @@
 @font-face {
     font-family: FitaVjaz;
     font-display: swap;
-    src: url("/fonts/FitaVjaz-Regular.woff2") format("woff2"), url("../fonts/FitaVjaz-Regular.woff") format("woff");
+    src: url("/fonts/FitaVjaz-Regular.woff") format("woff"), url("../fonts/FitaVjaz-Regular.woff") format("woff");
     font-weight: 400;
     font-style: normal;
 }
@@ -52,9 +52,21 @@
 @font-face {
     font-family: Candara;
     font-display: swap;
-    src: url("/fonts/Candara-Regular.woff2") format("woff2"), url("../fonts/Candara-Regular.woff") format("woff");
+    src: url("/fonts/Candara-Regular.woff") format("woff"), url("../fonts/Candara-Regular.woff") format("woff");
     font-weight: 400;
     font-style: normal;
+}
+
+@font-face {
+    font-family: Vezitsa;
+    font-display: swap;
+    src: local("VezitsaCyrillic"), url("../fonts/vezitsacyrillic-webfont.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+}
+
+.font-vezitsa {
+    font-family: "Vezitsa", sans-serif;
 }
 
 :root {
@@ -269,6 +281,34 @@ section {
     float: right;
 }
 
+/* Bootstrap-like utilities (used in content images) */
+.d-block {
+    display: block !important;
+}
+
+.mx-auto {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.mb-3 {
+    margin-bottom: 1rem !important;
+}
+
+@media (min-width: 768px) {
+    .mb-md-0 {
+        margin-bottom: 0 !important;
+    }
+
+    .mr-md-4 {
+        margin-right: 1.5rem !important;
+    }
+
+    .float-md-left {
+        float: left !important;
+    }
+}
+
 .trans_200 {
     -webkit-transition: all 200ms ease;
     -moz-transition: all 200ms ease;
@@ -374,6 +414,17 @@ button {
     top: 0px;
 }
 
+.header-buttons {
+    display: flex;
+    align-items: center;
+}
+
+.header-buttons .donation_button {
+    margin: 0;
+    width: 160px;
+    flex-shrink: 0;
+    
+}
 /*********************************
 3.1 Top Bar
 *********************************/
@@ -458,9 +509,9 @@ button {
     background: #FFFFFF;
 }
 
-.header_container .container {
+/* .header_container .container {
     max-width: 1170px;
-}
+} */
 
 .header__top {
     border-bottom: 2px #ececec solid;
@@ -538,8 +589,8 @@ button {
     -ms-transition: all 200ms ease;
     -o-transition: all 200ms ease;
     transition: all 200ms ease;
-    border-left: 2px #ececec solid;
-    border-right: 2px #ececec solid;
+//    border-left: 2px #ececec solid;
+//    border-right: 2px #ececec solid;
 }
 
 .logo img {
@@ -1677,6 +1728,26 @@ button {
     width: 100%;
 }
 
+.treby-grid .news_post,
+.treby-grid .news_post_content {
+  display: flex;
+  flex-direction: column;
+  row-gap: 14px;
+}
+
+.treby-grid .news_post_text,
+.treby-grid .news_post_title {
+    margin-top: 0;
+}
+
+.treby-grid .news_post_content {
+  flex-grow: 1;
+}
+
+.treby-grid .news_post .button {
+  margin-top: auto !important; /* В иделе, убрать атомарный класс в карточке и задавать отсюда и избавиться от !important*/
+}
+
 .news_image {
     width: 100%;
     display: block;
@@ -2145,7 +2216,7 @@ button {
 }
 
 .page-content {
-    padding: 50px 0;
+    padding: 35px 0;
 }
 
 .img-adaptive {
@@ -2551,6 +2622,7 @@ a.bg-secondary:hover {
 
     .header__top {
         padding-top: 6px;
+        padding-bottom: 4px;
     }
 
     .page-content {
@@ -2677,47 +2749,7 @@ a.bg-secondary:hover {
     .table--donations-detailed tr td:nth-child(4) {
         display: none;
     }
-
-    .table--donations thead {
-        display: none;
-    }
-
-    .table--donations tbody tr {
-        display: flex;
-        flex-wrap: wrap;
-        border-bottom: 1px rgb(241, 241, 241) solid;
-        padding: 15px 0;
-    }
-
-    .table--donations tbody td {
-        border: 0;
-        padding: 0;
-    }
-
-    .table--donations tbody td:nth-child(1) {
-
-        width: 100%;
-
-        font-style: italic;
-    }
-
-    .table--donations tbody td:nth-child(2) {
-
-        width: 40%;
-    }
-
-    .table--donations tbody td:nth-child(3) {
-
-        width: 59%;
-
-        display: flex;
-
-        align-items: center;
-    }
-
-    .table--donations tbody td:nth-child(3) i {
-        margin: 0 5px;
-    }
+  
 }
 
 .btn-info {
@@ -3095,8 +3127,16 @@ position: absolute !important;
     margin-top: 0;
     min-height: 50px;
 }
+
+.news_post_content .button a:hover {
+    background: #2e5b84;
+}
+
 .treby-grid--about-the-temple .donation_button a {
-    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
     line-height: 1.2;
 }
 
@@ -3316,7 +3356,7 @@ table p {}
 
 }
 
-.video-carousel .slick-slide a svg {
+/* .video-carousel .slick-slide a svg {
     position: absolute;
     z-index: 2;
     top: 50%;
@@ -3325,11 +3365,11 @@ table p {}
     fill: #e54744;
     width: 35px;
     height: 35px;
-}
+} */
 
 .video-carousel .slick-slide a {
     position: relative;
-    display: block;
+    padding: 5px;
 }
 
 .video-carousel .slick-slide a:hover svg {
@@ -3338,9 +3378,7 @@ table p {}
 }
 
 
-
-
-.videolist_tpl a svg {
+.videolist_tpl img + svg {
     position: absolute;
     z-index: 2;
     top: 50%;
@@ -3349,7 +3387,8 @@ table p {}
     fill: #e54744;
     width: 35px;
     height: 35px;
-}
+    transition: all .2s ease-in-out;
+} 
 
 .videolist_tpl a {
     position: relative;
@@ -3397,12 +3436,6 @@ table p {}
 .video-carousel .slick-slide a img {
     width: 100%;
 }
-
-.video-carousel .slick-slide a {
-    padding: 5px;
-}
-
-
 
 .video-carousel .slick-arrow {
     width: 36px;
@@ -3519,12 +3552,7 @@ table p {}
 }
 
 p.videowraplists {
-
     margin-bottom: 10px;
-}
-
-p.videowraplists a {
-    border: none;
 }
 
 
@@ -3534,18 +3562,16 @@ p.videowraplists a:hover {
 }
 
 p.videowraplists a {
-    position: relative;
     display: flex;
+    align-items: center;
+    border: none;
 }
 
 p.videowraplists a svg {
-    position: relative;
-    left: 0;
-    top: 0;
-    transform: translate(0%, 0%);
     width: 20px !important;
     height: 20px !important;
     margin-right: 6px;
+    fill: #e54744;
 }
 
 p.videowraplists {
@@ -3938,13 +3964,18 @@ body.compensate-for-scrollbar .header {
     font-size: 32px;
 }
 
-.section-prayer__additional {
+/* .section-prayer__additional {
     margin-bottom: 30px;
-}
+} */
 
+.section-prayer__additionals,
 .section-prayer__aside {
     display: flex;
     flex-direction: column;
+}
+
+.section-prayer__additionals {
+    row-gap: 30px
 }
 
 /* .section-prayer__aside>.float-field .form_input,
@@ -3985,6 +4016,7 @@ body.compensate-for-scrollbar .header {
 }
 
 .section-prayer__block .h3 {
+    font-family: Vezitsa;
     font-size: 30px;
     color: var(--progress-bar-color-primary);
     margin-bottom: 16px;
@@ -4167,11 +4199,11 @@ body.compensate-for-scrollbar .header {
     cursor: pointer;
 }
 
-/* .section-prayer-item.active button,
-.section-prayer-item__add:not(.active) button:hover {
-    color: #fff;
-    background: #d6b574;
-} */
+.section-prayer-item:not(.active) button
+/* .section-prayer-item__add:not(.active) button:hover */ 
+{
+    background: #2e5b84;
+}
 
 .section-prayer__footer button:hover {
     background: #2e5b84;
@@ -4232,10 +4264,10 @@ body.compensate-for-scrollbar .header {
     cursor: pointer;
 }
 
-.section-prayer-item__add button:active,
+/* .section-prayer-item__add button:active,
 .section-prayer-item__add button.active {
-    color: #000;
-}
+    
+} */
 
 .section-prayer-additional>p {
     font-size: 25px;
@@ -4669,18 +4701,11 @@ body.compensate-for-scrollbar .header {
         font-size: 20px;
     }
 
-    .table--donations tbody tr {
-        flex-wrap: nowrap;
-        gap: 10px;
-    }
-
     .table--donations tbody tr td {
         font-size: 16px;
     }
 
-    .table--donations tbody td:nth-child(2) {
-        width: 48%;
-    }
+
 
     .breadcrumb-item a,
     .breadcrumb-item {
@@ -4771,6 +4796,10 @@ body.compensate-for-scrollbar .header {
 }
 
 @media (max-width: 575.98px) {
+    .section-prayer__form .block-header h2,
+    .section-prayer__form .block-header .h2 {
+        margin-top: 0;
+    }
     .cookie-banner p {
         font-size: 12px;
         line-height: 1.33;
